@@ -1,0 +1,30 @@
+{
+  "name": "rmarques.io",
+  "version": "1.0.0",
+  "description": "Personal work experience and skills.",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ras-marques/rmarques.io.git"
+  },
+  "keywords": [
+    "experience",
+    "portfolio"
+  ],
+  "author": "Ruben Marques",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ras-marques/rmarques.io/issues"
+  },
+  "homepage": "https://github.com/ras-marques/rmarques.io#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "ejs": "^2.5.5",
+    "express": "^4.16.3",
+    "nodemailer": "^4.6.5"
+  }
+}

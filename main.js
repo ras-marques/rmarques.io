@@ -25,24 +25,24 @@ app.post('/sendmail', function(req, res) {
     var data = req.body;
     var name = data.name;
     var email = data.email;
-    var suggestions = data.suggestions;
+    var message = data.message;
 
     if(!name){
         name=email;
     }
-    if (!email || !suggestions) {
-        res.send("Error: Email and suggestions should not be Blank");
+    if (!email || !message) {
+        res.send("Error: Email and message should not be Blank");
         return false;
     }
 
     // rest of email-sending code here
-    var smtpTransport = nodemailer.createTransport("smtps://easypeaz2018%40gmail.com:"+encodeURIComponent('pilona3000') + "@smtp.gmail.com:465");
-    var whosent = name + " - " + email + " - Sent the following suggestion:<br>"
+    var smtpTransport = nodemailer.createTransport("smtps://rmarquesio1991%40gmail.com:"+encodeURIComponent('A4kpM;6#{*V*jS)t') + "@smtp.gmail.com:465");
+    var whosent = name + " - " + email + " - Sent the following message:<br>"
 
     var mailOptions = {
         to: "rubenmarques91@gmail.com",
-        subject: "New suggestion from "+ name,
-        html: whosent + suggestions
+        subject: "New message from "+ name,
+        html: whosent + message
     };
     smtpTransport.sendMail(mailOptions, function(error, response) {
         if (error) {

@@ -1,0 +1,20 @@
+<script>
+    function sendmailFrom(target) {
+        var xmlhttp = new XMLHttpRequest();
+        var url = "sendmail";
+        var message_formData = new FormData(document.getElementById(target));
+        var message_formData_objectified = {};
+        for (var pair of message_formData.entries()) {
+            message_formData_objectified[pair[0].toString()] = pair[1];
+        }
+        var myJSON = JSON.stringify(message_formData_objectified);
+        xmlhttp.open("POST", url, true);
+        xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xmlhttp.send(myJSON);
+        alert("Message received. Thank you!")
+        document.getElementById("name").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("message").value = "";
+        window.scrollTo(0, 0);
+    }
+</script>

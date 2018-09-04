@@ -36,9 +36,61 @@ time the Raspberry reboots. This is of course done automatically, by adding the 
 iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3000
 ```
 
+### start the server at boot
+
+Make a file on `/etc/systemd/system/` and give it the right permissions
+
+```bash
+sudo touch /etc/systemd/system/startrmarquesio.service
+sudo chmod u+x /etc/systemd/system/startrmarquesio.service
+sudo chmod g+x /etc/systemd/system/startrmarquesio.service
+```
+
+Fill it with the good stuff
+
+```bash
+[Service]
+WorkingDirectory=/home/pi/rmarques.io
+ExecStart=/usr/local/bin/npm start
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=rmarques.io
+User=root
+Group=root
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Now enable it on boot with:
+
+```bash
+sudo systemctl enable startrmarquesio.service
+```
+
+If you ever want to disable it:
+
+```bash
+sudo systemctl disable startrmarquesio.service
+```
+
+Just to test, you can start the service with
+
+```bash
+sudo systemctl start startrmarquesio.service
+```
+
+and stop it with
+
+```bash
+sudo systemctl stop startrmarquesio.service
+```
+
 ### run server
 
-When developing the backend, I will need to start npm (and kill it with CTRL+C) periodically.
+When developing the backend, you will need to start npm (and kill it with CTRL+C) periodically.
 
 ```bash
 $ npm start

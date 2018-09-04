@@ -306,6 +306,12 @@ label {
 	-webkit-box-shadow: transparent;
 	box-shadow: transparent;
 }
+.cv-link {
+	color: lightgray;
+}
+.cv-link:hover {
+	color: white;
+}
 .form-control::-webkit-input-placeholder {
 color: #777;
 }

@@ -11,10 +11,15 @@
         xmlhttp.open("POST", url, true);
         xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         xmlhttp.send(myJSON);
-        alert("Message received. Thank you!")
+        //alert("Message received. Thank you!")
+        var success_div=document.getElementById("success");
+        success_div.innerHTML+="<div class='alert alert-success'>\n" +
+            "            <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>\n" +
+            "            <strong>Thank you for your message!<br>I will get back to you shortly. </strong>\n" +
+            "        </div>";
+
         document.getElementById("name").value = "";
         document.getElementById("email").value = "";
         document.getElementById("message").value = "";
-        window.scrollTo(0, 0);
     }
 </script>

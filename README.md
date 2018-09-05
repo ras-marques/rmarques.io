@@ -38,7 +38,7 @@ $ sudo ddclient -daemon=0 -debug -verbose -noquiet -force
 If ok, the last line should be something like:
 
 ```bash
-$ SUCCESS:  updating @: good: IP address set to xxx.xxx.xxx.xxx
+SUCCESS:  updating @: good: IP address set to xxx.xxx.xxx.xxx
 ```
 
 ### install node
@@ -77,7 +77,18 @@ iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 30
 iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 443 -j REDIRECT --to-port 3443
 ```
 
+### add the ssl certificate, key and ca-bundle
 
+The certificate and ca-bundle can be obtained from namecheap, but the private key had to be stored in my GDrive.
+
+The three files have to be placed inside a folder called `ssl` at the root of the repository. This is the present folder
+structure:
+
+```bash
+/home/pi/rmarques.io/ssl/ca-bundle.pem
+/home/pi/rmarques.io/ssl/rmarques_io_key.pem
+/home/pi/rmarques.io/ssl/rmarques_io_crt.pem
+```
 
 ### start the server at boot
 

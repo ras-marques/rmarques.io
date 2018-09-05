@@ -52,6 +52,23 @@ app.post('/sendmail', function(req, res) {
         }
     });
 });
+var port = 3443;
+var ca_bundle = fs.readFileSync('/home/pi/rmarques.io/ssl/ca-bundle.pem');
+var privateKey = fs.readFileSync('/home/pi/rmarques.io/ssl/rmarques_io_key.pem');
+var certificate = fs.readFileSync('/home/pi/rmarques.io/ssl/rmarques_io_crt.pem');
+var options = {
+    ca: ca_bundle,
+    key: privateKey,
+    cert: certificate
+}
 
-app.listen(3000);
-console.log('listening on port 3000');
+var https = require('https');
+https.createServer(options, app).listen(port);
+console.log('listening on port '+port);
+
+// Now, to redirect http to https, I will create a secondary server just for this purpose
+var http = require('http');
+http.createServer(function (req, res) {
+    res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
+    res.end();
+}).listen(3080);

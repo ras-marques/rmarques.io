@@ -21,6 +21,11 @@ app.get('/', function(req, res) {
     res.render('pages/index');
 });
 
+// airsoft page
+app.get('/airsoft', function(req, res) {
+    res.render('pages/airsoft');
+});
+
 app.post('/sendmail', function(req, res) {
     var data = req.body;
     var name = data.name;

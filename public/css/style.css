@@ -306,6 +306,13 @@ label {
 	-webkit-box-shadow: transparent;
 	box-shadow: transparent;
 }
+.airsoft-link {
+	color: blue;
+}
+.airsoft-link:hover {
+	color: darkorchid;
+	text-decoration: underline;
+}
 .cv-link {
 	color: lightgray;
 }
